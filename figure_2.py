@@ -4,18 +4,6 @@ from data import r0
 import numpy as np
 import matplotlib.pyplot as plt
 
-def characteristic(array: np.ndarray, h: np.ndarray, u: np.ndarray) -> None:
-    ### if array is cut, other must be cut as well
-    n = 20
-    arg_max, arg_min = np.argpartition(array, -n)[-n:], np.argpartition(array, n)[:n]
-    modules = np.abs(array)
-    indx = np.argpartition(modules, 3)[:3]
-
-    print(f"max = {array[arg_max]}, u_rad = {u[arg_max]}, u_deg = {np.degrees(u[arg_max])}, h = {h[arg_max]}")
-    print(f"min = {array[arg_min]}, u_rad = {u[arg_min]}, u_deg = {np.degrees(u[arg_min])}, h = {h[arg_min]}")
-    # print(f"zeros = {array[indx]}, u_rad = {u[indx]}, u_deg = {np.degrees(u[indx])}, h = {h[indx]}")
-    print("\n\n")
-
 if __name__ == "__main__":
     # Input data
     a = 12_000                                  # km
@@ -55,15 +43,6 @@ if __name__ == "__main__":
                                (((-20, -40), (20, 10), (30, 0)), ((-50, -30), (20, 0), (-5, 30)), ((-90, -10), (-20, 30), (30, 0)), ((-20, 30), (20, 0), (20, 10))))
 
     mask_1, mask_2 = u < np.pi, u > np.pi
-
-    # characteristic(acceler[0][mask_1], heights[mask_1], u[mask_1])
-    # characteristic(acceler[0][mask_2], heights[mask_2], u[mask_2])
-    # characteristic(acceler[1][mask_1], heights[mask_1], u[mask_1])
-    # characteristic(acceler[1][mask_2], heights[mask_2], u[mask_2])
-    # characteristic(acceler[2][mask_1], heights[mask_1], u[mask_1])
-    # characteristic(acceler[2][mask_2], heights[mask_2], u[mask_2])
-    characteristic(acceler[3][mask_1], heights[mask_1], u[mask_1])
-    characteristic(acceler[3][mask_2], heights[mask_2], u[mask_2])
 
     for i in range(2):
         mask = u >= np.pi if i else u <= np.pi
@@ -106,4 +85,4 @@ if __name__ == "__main__":
 
     plt.tight_layout(rect=[0.05, 0, 1, 1])
 
-    # plt.show()
+    plt.show()
