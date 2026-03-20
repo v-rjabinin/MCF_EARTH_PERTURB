@@ -96,3 +96,7 @@ python3 figure_1.py
 python3 figure_2.py
 python3 figure_3.py
 ```
+4. **Просмотр результатов**:
+
+* Графики откроются в окнах `Matplotlib`
+* Подробный анализ содержится в `Report.pdf`
